@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
+      <script src='//api.tiles.mapbox.com/mapbox.js/plugins/leaflet-omnivore/v0.3.1/leaflet-omnivore.min.js'></script>
+      <style>
+        #map{ width: 900px; height: 500px; }
+      </style>
+    </head>
+
+
+<body>
+
+<h3>Les parcours sungdgauviens préférés des cyclistes du VCSA !</h3>
+<p>Découvrez en naviguant sur la carte ci-dessous les parcours préférés de nos coureurs. À consulter sur ordinateur plutôt que sur smartphone !</p>
+
+
+  <div id="map"  style="height:100vh;width:100%">    
+  </div>
+
+
+</body>
+
+
+  <script>
+  // initialize the map
+    var map = L.map('map').setView([47.5501, 7.3093], 11); // Altkirch
+
+    var osmLayer = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', { // LIGNE 20
+        attribution: '© OpenStreetMap contributors',
+        maxZoom: 19
+    });
+
+    map.addLayer(osmLayer);
+
+
+
+
+var listOfImageLongitudes = [12,13,14];
+
+
+var colors = [
+'#3388ff',
+'#800000',
+'#9a6324',
+'#808000',
+'#469990',
+'#000075',
+'#000000', 
+'#e6194b',
+'#f58231',
+'#ffe119',
+'#bfef45',
+'#3cb44b',
+'#42d4f4',
+'#4363d8',
+'#911eb4',
+'#f032e6',
+'#a9a9a9'
+];
+
+
+    L.marker([parseFloat(12, 13)]).addTo(map).bindTooltip('Hop');
+
+
+  </script>
