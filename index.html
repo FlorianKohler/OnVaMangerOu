@@ -46,17 +46,21 @@
     map.addLayer(osmLayer);
 
 
-    $.get('./dataOSM.csv', function(csvString) {
+    $.get('https://floriankohler.github.io/OnVaMangerOu/dataOSM.csv', function(csvString) {
 
     // Use PapaParse to convert string to array of objects
-    var data = Papa.parse(csvString, {header: true, dynamicTyping: true, delimiter: ";"}).data;
+    var data = Papa.parse(csvString, {header: true, dynamicTyping: true}).data;
 
+    
     // For each row in data, create a marker and add it to the map
     // For each row, columns `Latitude`, `Longitude`, and `Title` are required
     for (var i in data) {
+
       var row = data[i];
 
-      var marker = L.marker([row.Latitude, row.Longitude], {
+      console.log(row.name);
+
+      var marker = L.marker([row.latitude, row.longitude], {
         opacity: 1
       }).bindPopup(row.name);
       
@@ -67,6 +71,7 @@
 
 
   </script>
+
 
 
 
