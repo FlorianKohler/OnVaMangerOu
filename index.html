@@ -3,7 +3,12 @@
     <head>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin="" />
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
-      <script src='//api.tiles.mapbox.com/mapbox.js/plugins/leaflet-omnivore/v0.3.1/leaflet-omnivore.min.js'></script>
+      
+
+  <!-- Load jQuery and PapaParse to read data from a CSV file -->
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/papaparse@5.3.0/papaparse.min.js"></script>
+
       <style>
         #map{ width: 900px; height: 500px; }
       </style>
@@ -12,8 +17,8 @@
 
 <body>
 
-<h3>Les parcours sungdgauviens préférés des cyclistes du VCSA !</h3>
-<p>Découvrez en naviguant sur la carte ci-dessous les parcours préférés de nos coureurs. À consulter sur ordinateur plutôt que sur smartphone !</p>
+<h3>Où peut-on aller manger ?</h3>
+<p>Découvrons le choix local, tout en sachant quel lieu a déjà été expérimenté par qui ! </p>
 
 
   <div id="map"  style="height:100vh;width:100%">    
@@ -25,43 +30,87 @@
 
   <script>
   // initialize the map
-    var map = L.map('map').setView([47.5501, 7.3093], 11); // Altkirch
+    var map = L.map('map').setView([48.5856, 7.7405], 16); //Halles
 
     var osmLayer = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', { // LIGNE 20
         attribution: '© OpenStreetMap contributors',
         maxZoom: 19
     });
 
+  /* Control panel to display map layers */
+  var controlLayers = L.control.layers( null, null, {
+    position: "topright",
+    collapsed: false
+  }).addTo(map);
+
     map.addLayer(osmLayer);
 
 
+    $.get('./dataOSM.csv', function(csvString) {
 
+    // Use PapaParse to convert string to array of objects
+    var data = Papa.parse(csvString, {header: true, dynamicTyping: true, delimiter: ";"}).data;
 
-var listOfImageLongitudes = [12,13,14];
+    // For each row in data, create a marker and add it to the map
+    // For each row, columns `Latitude`, `Longitude`, and `Title` are required
+    for (var i in data) {
+      var row = data[i];
 
+      var marker = L.marker([row.Latitude, row.Longitude], {
+        opacity: 1
+      }).bindPopup(row.name);
+      
+      marker.addTo(map);
+    }
 
-var colors = [
-'#3388ff',
-'#800000',
-'#9a6324',
-'#808000',
-'#469990',
-'#000075',
-'#000000', 
-'#e6194b',
-'#f58231',
-'#ffe119',
-'#bfef45',
-'#3cb44b',
-'#42d4f4',
-'#4363d8',
-'#911eb4',
-'#f032e6',
-'#a9a9a9'
-];
-
-
-    L.marker([parseFloat(12, 13)]).addTo(map).bindTooltip('Hop');
+  });
 
 
   </script>
+
+
+
+  <!DOCTYPE html>
+<html>
+<head>
+  <title>leaflet-map-csv</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8">
+
+  <!-- Load Leaflet code library - see updates at http://leafletjs.com/download.html -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"/>
+  <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+
+
+
+  <!-- Position the map with Cascading Style Sheet (CSS) -->
+  <style>
+    body { margin:0; padding:0; }
+    #map { position: absolute; top:0; bottom:0; right:0; left:0; }
+  </style>
+
+</head>
+<body>
+
+  <!-- Insert HTML division tag to layout the map -->
+  <div id="map"></div>
+
+  <!-- Insert Javascript (.js) code to create the map -->
+  <script>
+
+
+
+
+
+  // see more basemap options at https://leaflet-extras.github.io/leaflet-providers/preview/
+
+  // Read markers data from data.csv
+  
+
+  map.attributionControl.setPrefix(
+    'View <a href="https://github.com/HandsOnDataViz/leaflet-map-csv" target="_blank">code on GitHub</a>'
+  );
+
+  </script>
+</body>
+</html>

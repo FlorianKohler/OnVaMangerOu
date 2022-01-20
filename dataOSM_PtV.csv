@@ -1,0 +1,107 @@
+latitude;longitude;name;amenity;cuisine
+48.5838077;7.7348637;New Chinatown;restaurant;chinese
+48.5842546;7.7375362;Le Botaniste;restaurant;
+48.5839098;7.7370412;Restaurant Brasserie L'Anatolie (Titan);restaurant;
+48.5827572;7.7333949;La Grande Vitesse;restaurant;french
+48.5856856;7.7403486;Pho Kim Saigon;restaurant;
+48.583691;7.7474191;Le Crocodile;restaurant;french
+48.582732;7.744598;Secret De Table;restaurant;
+48.5886991;7.7469221;La Petite Cantoche;restaurant;"burger;french"
+48.5858895;7.7469782;Yapan sushi;restaurant;sushi
+48.5859483;7.7428459;Novotel Café Restaurant;restaurant;
+48.5884905;7.7405237;Le Cyrano;restaurant;
+48.5869994;7.7409898;La Bierstub;restaurant;
+48.5892468;7.74941;Les Innocents;restaurant;french
+48.5899569;7.7493576;La Tour de Jade;restaurant;asian
+48.5840803;7.743117;Le grand Shanghai;restaurant;asian
+48.5841953;7.7425797;La Grande Muraille;restaurant;chinese
+48.583754;7.7420132;Cigkoftem;restaurant;
+48.583866;7.7421696;Sidi Bou Saïd;restaurant;arab
+48.5836615;7.742267;Au Bouchon;restaurant;lyonnaise
+48.5839415;7.7425573;Ephese;restaurant;
+48.5842812;7.7429469;Le Bartholdi;restaurant;brasserie
+48.5842146;7.7426668;Sushido;restaurant;sushi
+48.5838027;7.7427733;La Pause Quinoa;restaurant;
+48.5825797;7.7394326;Les Chefs d’Oeuvre d'Alsace;restaurant;french
+48.5827794;7.7381002;Le Schnockeloch;restaurant;regional
+48.5840072;7.7367918;Nemrut;restaurant;
+48.586884;7.7431944;Thai Square;restaurant;Siamese
+48.5823339;7.7470122;Le Square Delicatessen;restaurant;
+48.5823829;7.7464553;La Stub;restaurant;
+48.5822028;7.7466865;Le Bistrot des Cocottes;restaurant;
+48.5824051;7.7491559;Au Saint-Sépulcre;restaurant;regional
+48.5834202;7.7412714;O Brazil;restaurant;brazilian
+48.584455;7.7365257;Le Dix;restaurant;
+48.5822979;7.7408673;La part thé;restaurant;french
+48.583882;7.7470301;Le Sultan;restaurant;lebanese
+48.583019;7.7353295;Au Coin des Kneckes;restaurant;
+48.5831194;7.7422754;Les Fines Gueules;restaurant;
+48.5824216;7.7426478;La Fignette;restaurant;
+48.5822938;7.7427168;Winstub S'kaechele;restaurant;regional
+48.5851276;7.7365868;Naoko;restaurant;japanese
+48.5827107;7.749111;Le Clou;restaurant;regional
+48.5822311;7.738901;Le Quai Crêp'Art;restaurant;crepe
+48.5829698;7.7361545;Sonar bangla;restaurant;indian
+48.5836145;7.7403861;La Grappa;restaurant;"italian;pizza;pasta;fish"
+48.5826176;7.7417462;AEDAEN Place;restaurant;
+48.582703;7.7439917;Suzanne;restaurant;
+48.5835949;7.7415652;Iskandar;restaurant;lebanese
+48.5843155;7.7484277;Vert carotte;restaurant;
+48.5855292;7.7404337;Mandala;restaurant;vietnamese
+48.5821096;7.7443914;Santa Elena;restaurant;latin_american
+48.5825604;7.7395453;Momo Tibétain;restaurant;tibetan
+48.5824978;7.7355707;Brasserie La Choppe;restaurant;
+48.5874164;7.7477362;Au tribunal;restaurant;
+48.5828946;7.7393039;Yume Sushi;restaurant;sushi
+48.5838744;7.7410259;Alambar;restaurant;italian
+48.5848679;7.7376281;Le Kuhn;restaurant;
+48.5874692;7.7460547;Namaste;restaurant;indian
+48.587313;7.7465093;Cokoon;restaurant;
+48.5821247;7.7421112;Le Galopin;restaurant;french
+48.5833473;7.7356892;Graffateria;restaurant;
+48.5834778;7.7428749;À la Tête de Lard;restaurant;french
+48.5821455;7.7350698;Murat;restaurant;
+48.5836198;7.7472776;Floderer;restaurant;
+48.585242;7.741191;Bistrot Moderne;restaurant;
+48.5825097;7.7398407;Velicious Burger;restaurant;
+48.5838459;7.738486;Baan Thaï;restaurant;thai
+48.582444;7.7388086;Le Mikado;restaurant;japanese
+48.5867801;7.7430451;Winstub La Vigne;restaurant;
+48.5847396;7.7456788;Yonako;restaurant;sushi
+48.5832243;7.7440983;Tonneau;restaurant;regional
+48.5831445;7.7440369;Bar O Centre;restaurant;
+48.5832186;7.7438512;Lamian;restaurant;chinese
+48.583666;7.7354103;Le Relais - Mangatama;restaurant;african
+48.5847119;7.743053;La Mauresque;restaurant;
+48.5827491;7.7407878;Street Butcher;restaurant;"barbecue;texan"
+48.583574;7.7370098;Abyssinia;restaurant;éthiopienne
+48.5839917;7.7377051;Le Mun’s;restaurant;regional
+48.5897278;7.7462349;La Fabrique à Miam;restaurant;
+48.5831992;7.742805;Alma;restaurant;
+48.5857793;7.7402668;L'Italien du Coin;restaurant;
+48.5869486;7.7408178;PUR etc.;restaurant;
+48.5837818;7.7433343;Osaka;restaurant;japanese
+48.5830482;7.744392;Falafilo;restaurant;lebanese
+48.5874911;7.7477315;Oishii Sushi;restaurant;japanese
+48.5875971;7.7476517;Le Verdict;restaurant;french
+48.5833959;7.7358938;Fashion Crêpe;restaurant;crepe
+48.584672;7.737595;La Palme d'Or;restaurant;indian
+48.5850055;7.7375925;S'Zwiling Stuebel;restaurant;regional
+48.5852858;7.7378816;Le Petit Casa;restaurant;arab
+48.5849082;7.7384942;Les petites cantines;restaurant;
+48.5821189;7.7431897;Yaki House;restaurant;japanese
+48.583498;7.7440542;AMIS ???;restaurant;chinese
+48.5840364;7.7436766;Ô Baozi;restaurant;"chinese;baozi"
+48.582422;7.7461626;Le Café Potager;restaurant;
+48.582455;7.7361868;Wok Six Couleurs;restaurant;chinese
+48.5854789;7.7379102;Chez Ani;restaurant;african
+48.5849863;7.7370476;Restaurant Gandhi;restaurant;indian
+48.5823775;7.7405219;La Case de L'Isle Bourbon;restaurant;caribbean
+48.5826115;7.7415686;Spuntino;restaurant;italian
+48.5838087;7.7434493;Brasserie l'Ours Blanc;restaurant;
+48.5824275;7.7402457;Les Saveurs du Midi;restaurant;
+48.5823029;7.7413747;Mama Roux;restaurant;regional
+48.5834264;7.7439956;Sichuan;restaurant;chinese
+48.5866067;7.7430958;Streeat;restaurant;
+48.5839982;7.7377286;Le Mun;restaurant;
+48.5834901;7.7381168;Air Bagels;restaurant;bagel
