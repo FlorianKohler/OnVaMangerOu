@@ -52,7 +52,7 @@
     });
 
 
-    $.get('http://www.onvamangerou.fr/dataOSM.csv', function(csvString) {
+    $.get('https://www.onvamangerou.fr/dataOSM.csv', function(csvString) {
 
     // Use PapaParse to convert string to array of objects
     var data = Papa.parse(csvString, {header: true, dynamicTyping: true}).data;
