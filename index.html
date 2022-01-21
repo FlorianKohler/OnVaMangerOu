@@ -46,7 +46,13 @@
     map.addLayer(osmLayer);
 
 
-    $.get('https://floriankohler.github.io/OnVaMangerOu/dataOSM.csv', function(csvString) {
+    var picIcon = L.icon({
+        iconUrl: './foodIcon.png',
+        iconSize: [27,38]
+    });
+
+
+    $.get('http://www.onamangerou.fr/dataOSM.csv', function(csvString) {
 
     // Use PapaParse to convert string to array of objects
     var data = Papa.parse(csvString, {header: true, dynamicTyping: true}).data;
@@ -58,13 +64,8 @@
 
       var row = data[i];
 
-      console.log(row.name);
+      L.marker([row.latitude, row.longitude], {icon:picIcon}).addTo(map).bindTooltip(row.name).addTo(map);
 
-      var marker = L.marker([row.latitude, row.longitude], {
-        opacity: 1
-      }).bindPopup(row.name);
-      
-      marker.addTo(map);
     }
 
   });
