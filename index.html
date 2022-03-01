@@ -50,6 +50,7 @@
       <!--<li><a>Plan</a></li>-->
       <li><a>À méditer</a></li>
       <li><a>Mentions légales</a></li>
+      <li><a>Jouons !</a></li>
     </ul>
   </div>
 
@@ -116,11 +117,98 @@
 
   </section>
 
+      <section class="tab-content">
+
+
+
+<h2 class="title">Objectif : trouver les 33 communes de l'EMS!</h2>
+    <h4> Aucune faute n'est tolérée (sauf la commune avec "oe", il faut détacher les deux lettres).</h4>
+    <h5>Désolé, il faut vérifier vous-mêmes que vous avez tout. Les communes sont classées et numérotées pour vous aider.</h5>
+
+
+    <p class="subtitle">Bonne chance !</p>
+    <input id="tentative" type="text" onchange="changeBackground(this);" />
+
+    <br/>
+
+    <div id="v2" style="color:blue; display:none;">1- Achenheim</div>
+    <div id="v3" style="color:blue; display:none;">2- Bischheim</div>
+    <div id="v4" style="color:blue; display:none; ">3- Blaesheim</div>
+    <div id="v5" style="color:blue; display:none; ">4- Breuschwickersheim</div>
+    <div id="v6" style="color:blue; display:none;">5- Eckbolsheim</div>
+    <div id="v7" style="color:blue; display:none;">6- Eckwersheim</div>
+    <div id="v8" style="color:blue; display:none;">7- Entzheim</div>
+    <div id="v9" style="color:blue; display:none;">8- Eschau</div>
+    <div id="v10" style="color:blue; display:none;">9- Fegersheim</div>
+    <div id="v11" style="color:blue; display:none;">10- Geispolsheim
+    </div>
+    <div id="v12" style="color:blue; display:none;">11- Hangenbieten
+    </div>
+    <div id="v13" style="color:blue; display:none;">12-Hoenheim
+    </div>
+    <div id="v14" style="color:blue; display:none;">13-Holtzheim
+    </div>
+    <div id="v15" style="color:blue; display:none;">14-Illkirch-Graffenstaden
+    </div>
+    <div id="v16" style="color:blue; display:none;">15-Kolbsheim
+    </div>
+    <div id="v17" style="color:blue; display:none;">16-Lampertheim
+    </div>
+    <div id="v18" style="color:blue; display:none;">17- Lingolsheim
+    </div>
+    <div id="v19" style="color:blue; display:none;">18- Lipsheim
+    </div>
+    <div id="v20" style="color:blue; display:none;">19- Mittelhausbergen
+    </div>
+    <div id="v21" style="color:blue; display:none;">20- Mundolsheim
+    </div>
+    <div id="v22" style="color:blue; display:none;">21- Niederhausbergen
+    </div>
+    <div id="v23" style="color:blue; display:none;">22- Oberhausbergen
+    </div>
+    <div id="v24" style="color:blue; display:none;">23- Oberschaeffolsheim
+    </div>
+    <div id="v25" style="color:blue; display:none;">24- Osthoffen
+    </div>
+    <div id="v26" style="color:blue; display:none;">25- Ostwald
+    </div>
+    <div id="v27" style="color:blue; display:none;">26- Plobsheim
+    </div>
+    <div id="v28" style="color:blue; display:none;">27- Reichstett
+    </div>
+    <div id="v29" style="color:blue; display:none;">28- Schiltigheim
+    </div>
+    <div id="v30" style="color:blue; display:none;">29- Souffelweyersheim
+    </div>
+    <div id="v31" style="color:blue; display:none;">30- Strasbourg
+    </div>
+    <div id="v32" style="color:blue; display:none;">31- Vendenheim
+    </div>
+    <div id="v33" style="color:blue; display:none;">32- La Wantzenau
+    </div>
+    <div id="v34" style="color:blue; display:none;">33- Wolfisheim </div>
+
+    <div id="vRate" style="color:blue; display:none;">Raté ! Essaie encore. </div>
+
+
+
+
+
+
+
+
+
+
+
+  </section>
+
+
 </div>
 
 </body>
 
 
+<!--- SCRIPT FOR TABS -->
 <script>
   let tabsWithContent = (function () {
     let tabs = document.querySelectorAll('.tabs li');
@@ -159,7 +247,7 @@
   })();
 </script>
 
-
+<!-- SCRIPT FOR MAP -->
  <script>
   // initialize the map
     var map = L.map('map').setView([48.5856, 7.7405], 16); //Halles
@@ -229,6 +317,184 @@
     }
   });
   </script>
+
+
+
+<!-- SCRIPT FOR GAME -->
+
+
+<script>
+
+
+  var v2_v = "Achenheim"
+  var v3_v = "Bischheim"
+  var v4_v = "Blaesheim"
+  var v5_v = "Breuschwickersheim"
+  var v6_v = "Eckbolsheim"
+  var v7_v = "Eckwersheim"
+  var v8_v = "Entzheim"
+  var v9_v = "Eschau"
+  var v10_v = "Fegersheim"
+  var v11_v = "Geispolsheim"
+  var v12_v = "Hangenbieten"
+  var v13_v = "Hoenheim"
+  var v14_v = "Holtzheim"
+  var v15_v = "Illkirch-Graffenstaden"
+  var v16_v = "Kolbsheim"
+  var v17_v = "Lampertheim"
+  var v18_v = "Lingolsheim"
+  var v19_v = "Lipsheim"
+  var v20_v = "Mittelhausbergen"
+  var v21_v = "Mundolsheim"
+  var v22_v = "Niederhausbergen"
+  var v23_v = "Oberhausbergen"
+  var v24_v = "Oberschaeffolsheim"
+  var v25_v = "Osthoffen"
+  var v26_v = "Ostwald"
+  var v27_v = "Plobsheim"
+  var v28_v = "Reichstett"
+  var v29_v = "Schiltigheim"
+  var v30_v = "Souffelweyersheim"
+  var v31_v = "Strasbourg"
+  var v32_v = "Vendenheim"
+  var v33_v = "La Wantzenau"
+  var v34_v = "Wolfisheim" 
+
+var allchar="0123456789ABCDEF";
+
+
+  function changeBackground(obj) {
+
+    if (tentative.value == v2_v) {
+      console.log("Trouve v2")
+      document.getElementById("v2").style.display = 'block';
+    }
+
+    else if (tentative.value == v3_v) {
+      console.log("Trouve v3")
+      document.getElementById("v3").style.display = 'block';
+    }
+
+    else if (tentative.value==v4_v) {
+      console.log("Trouve v4")
+      document.getElementById("v4").style.display = 'block';
+    }
+
+    else if (tentative.value==v5_v) {
+ console.log("Trouve v5")
+      document.getElementById("v5").style.display = 'block';
+    }
+
+    else if (tentative.value==v6_v) {
+       console.log("Trouve v6")
+      document.getElementById("v6").style.display = 'block';
+    }
+
+    else if (tentative.value==v7_v) {
+       console.log("Trouve v7")
+      document.getElementById("v7").style.display = 'block';
+    }
+
+    else if (tentative.value==v8_v) {
+      document.getElementById("v8").style.display = 'block';
+    } 
+        else if (tentative.value==v9_v) {
+      document.getElementById("v9").style.display = 'block';
+    } 
+        else if (tentative.value==v10_v) {
+      document.getElementById("v10").style.display = 'block';
+    } 
+        else if (tentative.value==v11_v) {
+      document.getElementById("v11").style.display = 'block';
+    } 
+        else if (tentative.value==v12_v) {
+      document.getElementById("v12").style.display = 'block';
+    } 
+            else if (tentative.value==v13_v) {
+      document.getElementById("v13").style.display = 'block';
+    } 
+            else if (tentative.value==v14_v) {
+      document.getElementById("v14").style.display = 'block';
+    } 
+            else if (tentative.value==v15_v) {
+      document.getElementById("v15").style.display = 'block';
+    } 
+            else if (tentative.value==v16_v) {
+      document.getElementById("v16").style.display = 'block';
+    } 
+            else if (tentative.value==v17_v) {
+      document.getElementById("v17").style.display = 'block';
+    } 
+            else if (tentative.value==v18_v) {
+      document.getElementById("v18").style.display = 'block';
+    } 
+            else if (tentative.value==v19_v) {
+      document.getElementById("v19").style.display = 'block';
+    } 
+            else if (tentative.value==v20_v) {
+      document.getElementById("v20").style.display = 'block';
+    } 
+            else if (tentative.value==v21_v) {
+      document.getElementById("v21").style.display = 'block';
+    } 
+            else if (tentative.value==v22_v) {
+      document.getElementById("v22").style.display = 'block';
+    } 
+            else if (tentative.value==v23_v) {
+      document.getElementById("v23").style.display = 'block';
+    } 
+            else if (tentative.value==v24_v) {
+      document.getElementById("v24").style.display = 'block';
+      document.getElementById("v24").style.display = 'block';
+    } 
+            else if (tentative.value==v25_v) {
+      document.getElementById("v25").style.display = 'block';
+    } 
+            else if (tentative.value==v26_v) {
+      document.getElementById("v26").style.display = 'block';
+    } 
+            else if (tentative.value==v27_v) {
+      document.getElementById("v28").style.display = 'block';
+    } 
+            else if (tentative.value==v28_v) {
+      document.getElementById("v28").style.display = 'block';
+    } 
+                else if (tentative.value==v29_v) {
+      document.getElementById("v29").style.display = 'block';
+    }
+                else if (tentative.value==v30_v) {
+      document.getElementById("v30").style.display = 'block';
+    }
+                else if (tentative.value==v31_v) {
+      document.getElementById("v31").style.display = 'block';
+    }
+                else if (tentative.value==v32_v) {
+      document.getElementById("v32").style.display = 'block';
+    }
+                else if (tentative.value==v33_v) {
+      document.getElementById("v33").style.display = 'block';
+    }
+
+    else {
+      console.log("NO")
+      document.getElementById("vRate").style.display = 'block';
+
+      var  randcol= "";
+      for(var i=0; i<6; i++){
+         randcol += allchar[Math.floor(Math.random()*16)];
+        }
+      document.getElementById("vRate").style.color = "#"+randcol;
+
+
+    }
+    document.getElementById("tentative").value = "";
+}
+
+  </script>
+
+
+
+
 
   
 </html>
