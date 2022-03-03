@@ -1,0 +1,10 @@
+.map__image {
+	width: 50%;
+	float: left;
+}
+
+.map__image path{
+	fill: grey;
+	stroke: black;
+	stroke-width:1px;
+}
