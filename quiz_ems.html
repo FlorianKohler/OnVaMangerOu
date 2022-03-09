@@ -7,33 +7,43 @@
     <title>L'espace jeux</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
     <link rel="stylesheet" href="app.css">
-
     <link rel="icon" href="favicon.ico" />
-
-
-
-
   </head>
 
-  <body style="margin:50px;">
 
-    <h2 class="title">Objectif : trouver les 33 communes de l'EMS!</h2>
-    <h4> Aucune faute n'est tolérée (sauf la commune avec "oe", il faut détacher les deux lettres).</h4>
-    <h5>Désolé, il faut vérifier vous-mêmes que vous avez tout. Les communes sont classées et numérotées pour vous aider.</h5>
+  <body>
+    <section class="section">
+      <h2 class="title">Objectif : trouver les 33 communes de l'EMS!</h2>
+      <h5>Désolé, il faut vérifier vous-mêmes que vous avez tout. Les communes sont classées et numérotées pour vous aider.</h5>
 
-    <p class="subtitle">Bonne chance !</p>
+      <p class="subtitle">Bonne chance !</p>
+      <p>Temps : <span id="timer_display"></span> secondes</p>
 
-    <input id="tentative" type="text" onchange="changeBackground(this)";/>
+      <input id="tentative" type="text" onchange="changeBackground(this)";/>
 
-    <br/>
+      <br>
 
-    <table  class="table">
-    <thead>
-        <tr>
-            <th>N° - Commune</th>
-        </tr>
-    </thead>
-    <tbody>
+
+      <section id="success_msg" class="hero is-success" style="display:none;">
+        <br>
+        <div class="hero-body">
+          <p class="title">
+            Félicitations !
+          </p>
+          <p class="subtitle">
+            Tu connais l'EMS sur le bout des doigts.
+          </p>
+        </div>
+        <br>
+      </section>
+
+      <table  class="table">
+      <thead>
+          <tr>
+              <th>N° - Commune</th>
+          </tr>
+      </thead>
+      <tbody>
 
         <tr id="vRate" style="color:blue; display:none;"><td id="compteur_fails" style="padding :0.3em 0.5em;"></td><td style="padding :0.3em 0.5em;" id="encouragement"></td></tr>
         <tr  id="v2" style="color:blue; display:none;">
@@ -78,16 +88,17 @@
         <tr id="v32" style="color:blue; display:none;"><td style="padding :0.3em 0.5em;">31</td><td style="padding :0.3em 0.5em;">Vendenheim</td></tr>
         <tr id="v33" style="color:blue; display:none;"><td style="padding :0.3em 0.5em;">32</td><td style="padding :0.3em 0.5em;">La Wantzenau</td></tr>
         <tr id="v34" style="color:blue; display:none;"><td style="padding :0.3em 0.5em;">33</td><td style="padding :0.3em 0.5em;">Wolfisheim </td></tr>
-
-    </tbody>
-</table>
-</body>
+      </tbody>
+    </table>
+    </section>
+  </body>
 
 <script>
 
 
   const les_communes = ["Achenheim","Bischheim","Blaesheim","Breuschwickersheim","Eckbolsheim","Eckwersheim","Entzheim","Eschau","Fegersheim","Geispolsheim","Hangenbieten","Hoenheim","Holtzheim","Illkirch-Graffenstaden","Kolbsheim","Lampertheim","Lingolsheim","Lipsheim","Mittelhausbergen","Mundolsheim","Niederhausbergen","Oberhausbergen","Oberschaeffolsheim","Osthoffen","Ostwald","Plobsheim","Reichstett","Schiltigheim","Souffelweyersheim","Strasbourg","Vendenheim","La Wantzenau","Wolfisheim"];
-
+  var verified = Array(33).fill(false);
+  console.log(verified);
   var allchar="0123456789ABCDEF";
 
   var compteur = 0;
@@ -98,7 +109,13 @@
       // top
       var index = les_communes.indexOf(tentative.value) + 2;
       var nom_var = "v" + index.toString();
+      verified[index-2] = true;
+      console.log(verified);
       document.getElementById(nom_var).style.display = 'block';
+      if (verified.includes(false) == false){
+        console.log("GAGNE");
+        document.getElementById(success_msg ).style.display = 'block';
+      }
     }
 
     else {
@@ -143,6 +160,18 @@
     };
     document.getElementById("tentative").value = "";
 }
+
+
+
+
+
+  var count = 0;
+  function updateCount() {
+   count = count + 1;
+   document.getElementById("timer_display").innerHTML = count;
+   setTimeout(updateCount, 1000);
+  }
+  updateCount();
 
   </script>
 

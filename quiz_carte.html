@@ -12,21 +12,17 @@
 
 <body>
 
-
+<section class="section">
 
 <!-- LE JEU SUR LA CARTE -->
 <div class="columns">
   	<div class="column">
 
 	    <h2 class="title">Objectif : nommer la commune qui s'affiche en bleu !</h2>
-	    <h4>Aucune faute n'est tolérée (sauf la commune avec "oe", il faut détacher les deux lettres).</h4>
-	    <h5>Désolé, il faut vérifier vous-mêmes que vous avez tout. Les communes sont classées par ordre alphabétique (sauf la dernière) et numérotées pour vous aider.</h5>
-
+	    <h4>Le tirage des communes est aléatoire. Il n'y a pas de fin au jeu.</h4>
 	    <p class="subtitle">Clique sur "C'est parti" pour commencer... et bonne chance !</p>
 
-		<button id="letsgo_c" onclick="newQuestion()">C'est parti</button>
-
-		</br></br>
+		<div id="letsgo_c" style="display:block;"><button id="letsgo_c" onclick="newQuestion()">C'est parti</button><br><br></div>
 
 		<input id="tentative_c" type="text" onchange="checkCity_c(this)"/>
 
@@ -88,6 +84,7 @@
 </div>
   <!-- Fin du HTML du quiz sur les lieux -->
 
+</section>
 </body>
 
 
@@ -147,6 +144,8 @@
     // first call from button to start to play
     if (prev_id_c == undefined) {
       // nothing to do
+      	document.getElementById('letsgo_c').style.display = "none";
+
 
     }
     else {
