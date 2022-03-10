@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>L'espace jeux</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <link rel="stylesheet" href="app.css">
+    <link rel="icon" href="favicon.ico" />
+</head>
+
+<body>
+
+<section class="section">
+
+<!-- LE JEU SUR LA CARTE -->
+<div class="columns">
+  	<div class="column">
+
+	    <h2 class="title">Objectif : donner le code postal de la commune qui s'affiche !</h2>
+	    <h4>Le tirage des communes est aléatoire. Il n'y a pas de fin au jeu.</h4>
+	    <br>
+		
+		<h4 class="subtitle"><div id="commune" style="display:block;"><</div></h4>
+
+		<input id="tentative_c" type="text" onchange="checkCity_c(this)"/>
+
+		<p id="message_c"></p>
+		<div id="decompte_c" style="display:none">
+		  <p>Score actuel : <span id="nb_communes_trouvees_txt_c"></span> CP trouvé(s) en <span id="nb_tentatives_txt_c"></span> tentative(s).</p>
+		</div>
+	</div>
+
+</div>
+  <!-- Fin du HTML du quiz sur les lieux -->
+
+</section>
+</body>
+
+
+
+<!-- Pour la carte -->
+
+
+<script>
+const id_cp =
+{
+  "C2": "67800",  
+  "C3": "67201",
+  "C4": "67640",
+  "C5": "67810",
+  "C6": "67550",
+  "C7": "67202",
+  "C8": "67640",
+  "C9":  "67990",
+  "C10": "67120",
+  "C11": "67112",
+  "C12": "67207",
+  "C13": "67450",
+  "C14": "67300",
+  "C15": "67460",
+  "C16": "67114",
+  "C17": "67610",
+  "C18": "67380",
+  "C19": "67450",
+  "C20": "67206",
+  "C21": "67400",
+  "C22": "67204",
+  "C23": "67116",
+  "C24": "67115",
+  "C25": "67800",
+  "C26": "67118",
+  "C27": "67980",
+  "C28": "67113",
+  "C29": "67550",
+  "C30": "67960",
+  "C31": "67205",
+  "C32": "67203",
+  "C33": "67540"
+}
+ const id_nom = 
+  {
+  "C2":"Bischheim",
+  "C3":"Eckbolsheim",
+  "C4":"Fegersheim",
+  "C5":"Holtzheim",
+  "C6":"Vendenheim",
+  "C7":"Wolfisheim",
+  "C8":"Lipsheim",
+  "C9":"Osthoffen",
+  "C10":"Kolbsheim",
+  "C11":"Breuschwickersheim",
+  "C12":"Niederhausbergen",
+  "C13":"Lampertheim",
+  "C14":"Schiltigheim",
+  "C15":"Souffelweyersheim",
+  "C16":"Eschau",
+  "C17":"La Wantzenau",
+  "C18":"Lingolsheim",
+  "C19":"Mundolsheim",
+  "C20":"Mittelhausbergen",
+  "C21":"Illkirch-Graffenstaden",
+  "C22":"Achenheim",
+  "C23":"Reichstett",
+  "C24":"Plobsheim",
+  "C25":"Hoenheim",
+  "C26":"Geispolsheim",
+  "C27":"Hangenbieten",
+  "C28":"Blaesheim",
+  "C29":"Eckwersheim",
+  "C30":"Entzheim",
+  "C31":"Oberhausbergen",
+  "C32":"Oberschaeffolsheim",
+  "C33":"Ostwald"
+  }
+
+  var currentCityIdToFind_c;
+  var currentCityToFind_c;
+  var currentCityCPToFind_c;
+  var nb_communes_trouvees_c = 0;
+  var nb_tentatives_c = 0;
+
+
+
+  var randomProperty = function (object) {
+    var keys = Object.keys(object);
+    return keys[Math.floor(keys.length * Math.random())];
+  };
+
+  newQuestion();
+
+  function newQuestion() {
+	
+	document.getElementById('message_c').innerHTML = "\n";
+
+    console.log("C'est (re)tipar, on doit trouver");
+
+    currentCityIdToFind_c = randomProperty(id_nom)
+    console.log(currentCityIdToFind_c);
+
+    currentCityToFind_c = id_nom[currentCityIdToFind_c];
+    console.log(currentCityToFind_c);
+
+    currentCityCPToFind_c = id_cp[currentCityIdToFind_c]
+    console.log(currentCityCPToFind_c);
+
+    document.getElementById("commune").innerHTML = currentCityToFind_c ;
+     
+   };
+
+  function checkCity_c(obj) {
+    if (tentative_c.value == currentCityCPToFind_c) {
+          // top
+        console.log("Bravo !");
+
+        document.getElementById('message_c').innerHTML = "<h4 class=\"subtitle\" style=\"color:blue\">Bravo !</h4>";
+        setTimeout(function() { newQuestion(currentCityIdToFind_c);}, 1500);
+
+        nb_communes_trouvees_c += 1; 
+    }
+
+    else {
+      console.log("Dommage");
+      document.getElementById('message_c').innerHTML = "Raté pour cette tentative, essaie encore !";
+     }
+
+     // reset anyway the text box
+     document.getElementById("tentative_c").value = "";
+
+     // update the statistics
+     nb_tentatives_c += 1;
+     // useful only once but nvm if we do it again and again
+     document.getElementById('decompte_c').style.display = "block";
+     document.getElementById('nb_tentatives_txt_c').innerHTML = nb_tentatives_c.toString();
+     document.getElementById('nb_communes_trouvees_txt_c').innerHTML = nb_communes_trouvees_c.toString();
+     
+    }
+
+
+
+</script>
+
+
+
+</html>
+
+
