@@ -8,9 +8,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
     <link rel="stylesheet" href="app.css">
     <link rel="icon" href="beer_favicon.ico" />
-
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-
+    <script src="https://kit.fontawesome.com/1e04ac15c8.js" crossorigin="anonymous"></script>
 
 </head>
 
@@ -18,16 +16,32 @@
 
 <!-- MENU --> 
 
+<nav class="navbar is-fixed-top is-light level">
 
-<nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
+    <p class="level-item has-text-centered">
+    <a class="navbar-item" href="#creux">Un p'tit creux</a>
+  </p>
+
+
+  <p class="level-item has-text-centered">
+    <img src="logo_horizontal.png" alt="Logo" style="height: 40px;">
+  </p>
+
+  <p class="level-item has-text-centered">
+    <a class="navbar-item" href="#jeux">Un p'tit jeu</a>
+  </p>
+
+</nav>
+
+
+<!--<nav class="navbar is-fixed-top is-light" role="navigation" aria-label="main navigation">
   <div class="navbar-brand">
-    <a class="navbar-item" href="https://bulma.io">
+    <a class="navbar-item" href="#">
       <img src="logo_horizontal.png" width="150">
     </a>
-
   </div>
 
-  <div id="navbarBasicExample" class="navbar-end">
+  <div id="navbarBasicExample" class="navbar-menu">
       <a class="navbar-item" href="#creux">
         Un p'tit creux
       </a>
@@ -36,7 +50,7 @@
         Un p'tit jeu
       </a>
     </div>
-</nav>
+</nav>-->
 
 
 <section class="hero is-success">
@@ -81,7 +95,7 @@
   <!-- LE PETIT CREUX -->
     <div class="card-content">
 
-    <p class="title is-3" style="text-align:center;"><span class="material-icons-outlined">menu_book</span> Pour les p'tites soifs et les p'tits creux</p>
+    <p class="title is-3" style="text-align:center;">Pour les p'tites soifs et les p'tits creux</p>
 
     <nav class="tabs is-boxed is-fullwidth is-large">
       <div class="container">
@@ -89,20 +103,21 @@
         <ul>
           <li class="tab is-active"  onclick="openTab(event,'Alcool')">
             <a>
-              <span class="material-icons-outlined">local_dining</span>
-              <span> Alcool</span>
+        <span class="icon is-small"><i class="fas fa-beer-mug" aria-hidden="true"></i></span>
+        <span> Alcool</span>
             </a>
           </li>
           <li class="tab" onclick="openTab(event,'SansAlcool')">
             <a>
-              <span class="material-icons-outlined">sports_bar</span>
-              <span> Sans alcool</span>
+        <span class="icon is-small"><i class="fas fa-mug-hot" aria-hidden="true"></i></span>
+        <span> Sans alcool</span>
             </a>
           </li>
           <li class="tab" onclick="openTab(event,'Food')">
             <a>
               
-              <span class="material-icons-outlined">coffee</span> Grignotage</span>
+        <span class="icon is-small"><i class="fa-solid ustensils" aria-hidden="true"></i></span>
+        <span>Grignotage</span>
             </a>
           </li>
         </ul>
@@ -187,7 +202,7 @@
                 <br>
                 <i>américain avec 2 volumes et demi d'eau</i>
                 <br>
-                <span class="tag is-primary is-light">Indispensable pour commencer la journée !</span>
+                <span class="tag is-warning is-light">Indispensable pour commencer la journée !</span>
               </div>
             </article>
 
@@ -280,10 +295,10 @@
         <div align="center"><a href="quiz_carte.html"><button class="button is-small is-responsive is-info is-outlined">>> Le jeu des 33 emplacements des communes de l'EMS <<</button></a></div>
       <br>
 
-      <div align="center"><a href="quiz_quartiers.html"><button class="button is-medium is-info is-outlined is-responsive">>> Le jeu des 28 quartiers de Strasbourg <<</button></a></div>
+      <div align="center"><a href="quiz_quartiers.html"><button class="button is-small is-info is-outlined is-responsive">>> Le jeu des 28 quartiers de Strasbourg <<</button></a></div>
           <br>
 
-       <div align="center"><a href="quiz_cp.html"><button class="button is-medium is-info is-outlined is-responsive">>> Le jeu des codes postaux de l'EMS <<</button></a></div>
+       <div align="center"><a href="quiz_cp.html"><button class="button is-small is-info is-outlined is-responsive">>> Le jeu des codes postaux de l'EMS <<</button></a></div>
       <br>
 
     </div>
@@ -318,32 +333,3 @@
   evt.currentTarget.className += " is-active";
 }
 </script>
-
-
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-
-  // Get all "navbar-burger" elements
-  const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
-
-  // Check if there are any navbar burgers
-  if ($navbarBurgers.length > 0) {
-
-    // Add a click event on each of them
-    $navbarBurgers.forEach( el => {
-      el.addEventListener('click', () => {
-
-        // Get the target from the "data-target" attribute
-        const target = el.dataset.target;
-        const $target = document.getElementById(target);
-
-        // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
-        el.classList.toggle('is-active');
-        $target.classList.toggle('is-active');
-
-      });
-    });
-  }
-
-});
-  </script>
