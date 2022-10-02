@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Simulateur Citiz</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <link rel="icon" href="voiture.ico" />
+   
+</head>
+
+<body>
+
+<div class="container">
+  <br>
+  <form name="costcalculator">
+
+  <h4 class="title is-4">Votre usage de la voiture avec <a href="https://grand-est.citiz.coop/">Citiz Grand Est</a></h4> 
+
+  <table class="table is-hoverable">
+
+    <tr>
+      <td>Abonnement</td>
+      <td>
+        <div class="abonnement-type">
+          <label for="abonnement" class="checkbox">
+              <input type="checkbox" id="abonnement" name="abonnement" value="yes">
+          </label>
+        </div>
+      </td>
+    </tr>
+      <td>Taille du véhicule utilisé </td>
+      <td>
+        <div class="taille-vehicule select">
+          <select name="tailleVehicule" id="tailleVehicule">
+            <option value="S">S</option>
+            <option value="M">M</option>
+            <option value="L">L</option>
+          </select>
+        </div>
+      </td>
+    </tr>
+
+    <tr>
+      <td>Pour un usage, nombre d'heures</td>
+      <td>
+        <div class="heuresUsage select">
+          <select name="heuresUsage" id="heuresUsage">
+            <option value="1">1 heure</option>
+            <option value="2">2 heures</option>
+            <option value="3">3 heures</option>
+            <option value="4">4 heures</option>
+            <option value="5">5 heures</option>
+            <option value="10">10 heures</option>
+          </select>
+        </div>
+      </td>
+    </tr>
+
+    <tr>
+      <td>Pour un usage, nombre de kilomètres parcourus</td>
+      <td>
+        <div class="kmsUsage select">
+          <select name="kmsUsage" id="kmsUsage">
+            <option value="5">5 km</option>
+            <option value="10">10 km</option>
+            <option value="15">15 km</option>
+            <option value="30">30 km</option>
+            <option value="50">50 km</option>
+            <option value="100">100 km</option>
+          </select>
+        </div>
+      </td>
+    </tr>
+
+    <tr>
+      <td>Nombre d'usages de ce type par mois mois, en moyenne</td>
+      <td>
+        <div class="nbUsages select">
+          <select name="nbUsages" id="nbUsages">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="4">4</option>
+            <option value="8">8</option>
+            <option value="16">16</option>
+          </select>
+        </div>
+      </td>
+    </tr>
+  </table>
+
+
+  <button class="button is-info is-medium" type="button" onclick="calculatePrice()">Calculer le coût</button>
+
+  </form>
+
+  <br>
+  <div id="price"></div> 
+
+  <div class="content">
+  <br>
+  <hr>
+  <p>La <strong>carte des stations Citiz</strong> : <a href="https://grand-est.citiz.coop/stations#">grand-est.citiz.coop/stations</a></p>
+  <p>Les différentes offres avantageuses :</p>
+  <ul>
+    <li>Le <strong>Pass Mobilité de Strasbourg</strong> inclut l'abonnement Citiz - plus d'infos : <a href="http://www.passmobilite.eu/">www.passmobilite.eu</a></li>
+    <li>Réductions et bons d'achat pour les <strong>abonnés ou titulaires de carte TER Fluo</strong> - plus d'infos : <a href="https://www.ter.sncf.com/grand-est/services-contacts/services/ter-voiture-libre-service">www.ter.sncf.com/grand-est/services-contacts/services/ter-voiture-libre-service</a></li>
+    <li>Le saviez-vous ? Votre abonnement Citiz peut être financé par le <strong>Compte Mobilité</strong> - plus d'infos : <a href="www.strasbourg.eu/zfe-aides">www.strasbourg.eu/zfe-aides</a></li>
+    <li>Devenez sociétaire de Citiz et bénéficiez de réductions selon les parts sociales acquises - plus d'infos : <a href="https://grand-est.citiz.coop/qui-sommes-nous/devenir-societaire/en-savoir-plus-sur-le-societariat">grand-est.citiz.coop/qui-sommes-nous/devenir-societaire/en-savoir-plus-sur-le-societariat</a></li>
+  </ul>
+</div>
+</div>
+
+<br>
+</body>
+</html>
+
+
+<script>
+var tarifs = {
+    'S': {'heureSansAbonnement': 5, 'heureAvecAbonnement' : 2.5, 'km': 0.39},
+    'M': {'heureSansAbonnement': 5.5, 'heureAvecAbonnement' : 3, 'km': 0.39},
+    'L': {'heureSansAbonnement': 6, 'heureAvecAbonnement' : 3.5, 'km': 0.39}
+};
+
+var prixAbonnement = 16;
+
+
+function calculatePrice()
+{
+  var tailleVehicule = document.getElementById('tailleVehicule').value;
+  var kmsUsage = document.getElementById('kmsUsage').value;
+  var heuresUsage = document.getElementById('heuresUsage').value;
+  var nbUsages = document.getElementById('nbUsages').value;
+
+  var nbHeuresMois = heuresUsage * nbUsages
+
+  const abonnement = document.querySelector('#abonnement');
+  let prixActuelAbonnement;
+  if (abonnement.checked == false) {
+    console.log("Case non cochee");
+    var prixHoraire = tarifs[tailleVehicule].heureSansAbonnement ;
+
+    prixActuelAbonnement = 0;
+  } else {
+    console.log("Case cochee");
+    var prixHoraire = tarifs[tailleVehicule].heureAvecAbonnement;
+    prixActuelAbonnement = prixAbonnement;
+  }
+  
+  var prixHeures = prixHoraire * nbHeuresMois ;
+  var kmsMois = kmsUsage * nbUsages;
+  var prixKm = tarifs[tailleVehicule].km * kmsMois;
+
+  var prixTotal = prixActuelAbonnement + prixHeures + prixKm ;
+
+  document.getElementById('price').innerHTML =
+  ` <div class="card">
+
+      <div class="card-content">
+        <div class="content">
+
+          <table class="table is-hoverable is-bordered">
+            <thead>
+                <tr>  
+                    <th></th>  
+                    <th>Quantité / Tarif</th>  
+                    <th>Votre coût mensuel</th>
+                    <th>Votre coût annuel</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Abonnement</td>
+                    <td>16€/mois<sup>(1)</sup></td>
+                    <td>` + prixActuelAbonnement + `€ </td>
+                    <td>` + 12*prixActuelAbonnement + `€ </td>
+                </tr>
+
+                <tr>
+                    <td>Coût des heures</td>
+                    <td>` + nbHeuresMois + `h/mois à ` + prixHoraire + `€/h<sup>(2)</sup></td>
+                    <td>` + prixHeures.toFixed(2) + `€</td>
+                    <td>` + (12*prixHeures).toFixed(2) + `€ </td>
+                </tr>
+
+                  <tr>
+                    <td>Coût par km</td>
+                    <td>` + kmsMois + `km/mois à 0.39cts/km </td>
+                    <td>` + prixKm.toFixed(2) + `€ </td>
+                    <td>` + (12*prixKm).toFixed(2) + `€ </td>
+                </tr>
+
+                  <tr style="font-weight:bold;"">
+                    <td>Coût total<sup style="font-weight:normal;">(3)</sup></td>
+                    <td></td>
+                    <td>` + prixTotal.toFixed(2) +  `€</td>
+                    <td>` + (12*prixTotal).toFixed(2) + `€</td>
+                </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      
+
+      <footer class="card-footer">
+        <p class="card-footer-item is-size-7">(1) Offre découverte : 3 mois d'abonnements offerts, sans engagement<br>(non inclus dans cette estimation)</p>
+        <p class="card-footer-item is-size-7">(2) Jeune conducteur : +56cts/h<br>(non inclus dans cette estimation)</p>
+        <p class="card-footer-item is-size-7">(3) + les frais d'inscription : 40€ (20€ en tarif réduit)<br>(non inclus dans cette estimation)</p>
+      </footer>
+
+      <footer class="card-footer">
+        <p class="card-footer-item"><strong>À comparer au coût de possession d'un véhicule : achat + essence + assurance + entretien + réparations (+parking) !</strong></p>
+      </footer>
+    </div> 
+`;
+}
+</script>
+
