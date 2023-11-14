@@ -1,0 +1,54 @@
+
+<div style="margin-left : 30px;">
+<h1>Parlons chocolat !</h1>
+
+<p>Lequel est votre préféré ?</p>
+
+<input type="button" name="Le chocolat noir" value="Le noir" onclick="showDiv()" /><br>
+<input type="button" name="Le chocolat blanc" value="Le blanc" onclick="showDiv()" /><br>
+<input type="button" name="Le chocolat au lait" value="Celui au lait" onclick="showDiv()"/><br>
+<input type="button" name="Milka Oreo" value="Milka Oreo" onclick="showDiv()" /><br>
+
+<br>
+
+<div id="Merci" style="display:none;" class="answer_list" >Merci d'avoir voté !</div>
+
+<br>
+
+<div id="Patience" style="display:none;">
+	<p>Nous attendons le vote des autres...</p>
+</div>
+
+<div id="Suite" style="display:none;">
+	<p>Les votes sont clos !</p>
+	<input type="button" name="Le chocolat au lait" value="Montrer les résultats" onclick="showDiv2()"/>
+</div>
+
+<br>
+
+<div id="Graphique"  style="display:none;" class="answer_list" >
+<img style="width:50%" src="Resultats.png"/>
+</div>
+</div>
+<script>
+
+function showDiv() {
+   document.getElementById('Merci').style.display = "block";
+	document.getElementById('Patience').style.display = "block";
+
+   setTimeout(suiteTraitement, 10000) 
+}
+
+function suiteTraitement()
+{
+	document.getElementById('Merci').style.display = "none";
+	document.getElementById('Patience').style.display = "none";
+	document.getElementById('Suite').style.display = "block";
+
+}
+
+function showDiv2() {
+   document.getElementById('Graphique').style.display = "block";
+}
+
+</script>
