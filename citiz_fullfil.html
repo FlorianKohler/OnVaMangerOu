@@ -6,8 +6,8 @@
   </head>
 
   <body>
-    <p>Click the button to modify an existing PDF document with <code>pdf-lib</code></p>
-    <button onclick="modifyPdf()">Modify PDF</button>
+    <p>Clique ci-dessous pour faire fonctionner le code <code>pdf-lib</code></p>
+    <button onclick="modifyPdf()">Remplir le document PDF</button>
     <p class="small">(Your browser will download the resulting file)</p>
   </body>
 
@@ -16,7 +16,7 @@
 
     async function modifyPdf() {
       // Fetch an existing PDF document
-      const url = 'https://onvamangerou.fr/doc-base.pdf'
+      const url = 'https://onvamangerou.fr/doc_base.pdf'
   		const existingPdfBytes = await fetch(url).then(res => res.arrayBuffer())
 
       // Load a PDFDocument from the existing PDF bytes
