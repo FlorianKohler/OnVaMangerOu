@@ -25,6 +25,9 @@
         .then(data => console.log(data))
         .catch(error => console.error('Erreur:', error))
 
+      console.log("Voilà à quoi ressemble le pdf :")
+      console.log(existingPdfBytes); // Check if this is defined and not undefined
+
       // Load a PDFDocument from the existing PDF bytes
       const pdfDoc = await PDFDocument.load(existingPdfBytes)
 
