@@ -19,7 +19,7 @@
       const url = './doc_base.pdf'
   		const existingPdfBytes = await fetch(url, {
             method: 'GET',
-            mode: 'cors' // ou 'same-origin' si les fichiers sont sur le même domaine
+            mode: 'same-origin' // ou 'same-origin' si les fichiers sont sur le même domaine
         })
          .then(res => res.arrayBuffer())
         .then(data => console.log(data))
