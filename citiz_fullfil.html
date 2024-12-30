@@ -63,38 +63,8 @@ async function modifyPdf() {
 
 // Function to modify the PDF content using pdf-lib
 async function modifyPdfContent(existingPdfBytes) {
-  const { PDFDocument } = window.pdfLib; // Make sure pdf-lib is loaded
-
-  // Load the existing PDF
-  const pdfDoc = await PDFDocument.load(existingPdfBytes);
-
-  // Get the first page
-  const pages = pdfDoc.getPages();
-  const firstPage = pages[0];
-
-  // Add some text to the first page
-  firstPage.drawText('This is some modified text!', {
-    x: 50,
-    y: 600,
-    size: 30,
-  });
-
-  // Save the modified PDF
-  const modifiedPdfBytes = await pdfDoc.save();
-
-  // For example, create a Blob and download the modified PDF
-  const blob = new Blob([modifiedPdfBytes], { type: 'application/pdf' });
-  const url = URL.createObjectURL(blob);
-  const link = document.createElement('a');
-  link.href = url;
-  link.download = 'modified_pdf.pdf';
-  link.click();
-
   console.log('PDF modified and ready to download!');
 }
-
-// Call the modifyPdf function
-modifyPdf();
 
       /*// Load a PDFDocument from the existing PDF bytes
       const pdfDoc = await PDFDocument.load(existingPdfBytes)
