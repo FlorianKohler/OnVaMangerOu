@@ -38,20 +38,7 @@
       }
     }
 
-    // Check if the first 5 bytes are '%PDF-'
-    const pdfSignature = "%PDF-".split('').map(c => c.charCodeAt(0)); // Convert to char codes
-
-    let isPdf = true;
-    for (let i = 0; i < pdfSignature.length; i++) {
-      if (view[i] !== pdfSignature[i]) {
-        isPdf = false;
-        break;
-      }
-    }
-
     console.log(isPdf ? "This is a PDF file." : "This is not a PDF file.");
-
-
 
       console.log("Voilà à quoi ressemble le pdf :")
       console.log(existingPdfBytes); // Check if this is defined and not undefined
