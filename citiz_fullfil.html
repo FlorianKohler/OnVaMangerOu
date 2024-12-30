@@ -63,10 +63,8 @@ async function modifyPdf() {
 
 // Function to modify the PDF content using pdf-lib
 async function modifyPdfContent(existingPdfBytes) {
-  console.log('PDF modified and ready to download!');
-}
 
-      /*// Load a PDFDocument from the existing PDF bytes
+  // Load a PDFDocument from the existing PDF bytes
       const pdfDoc = await PDFDocument.load(existingPdfBytes)
 
       // Embed the Helvetica font
@@ -111,8 +109,15 @@ async function modifyPdfContent(existingPdfBytes) {
       // Serialize the PDFDocument to bytes (a Uint8Array)
       const pdfBytes = await pdfDoc.save()
 
-			// Trigger the browser to download the PDF document
+      // Trigger the browser to download the PDF document
       download(pdfBytes, "citiz_complete.pdf", "application/pdf");
-    }*/
+
+        console.log('PDF modified and ready to download!');
+
+    }
+
+
+
+      
   </script>
 </html>
