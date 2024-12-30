@@ -15,20 +15,31 @@
   <script>
     const { degrees, PDFDocument, rgb, StandardFonts } = PDFLib
 
-    async function modifyPdf() {
-      // Fetch an existing PDF document
-      const url = './doc_base.pdf'
-  		const existingPdfBytes = await fetch(url, {
-            method: 'GET',
-            mode: 'same-origin' // ou 'same-origin' si les fichiers sont sur le même domaine
-        })
-         .then(res => res.arrayBuffer())
-        .then(data => console.log(data))
-        .catch(error => console.error('Erreur:', error))
+async function modifyPdf() {
+  try {
+    // Fetch an existing PDF document
+    const url = './doc_base.pdf'; // Your PDF file URL
+    const existingPdfBytes = await fetch(url, {
+      method: 'GET',
+      mode: 'same-origin', // or 'cors' if files are from a different domain
+    })
+      .then(res => res.arrayBuffer())
+      .catch(error => {
+        console.error('Error fetching PDF:', error);
+        throw error;
+      });
 
-    // Now you can check if it's a PDF by looking for the signature
+    // Check if the fetched content is an ArrayBuffer
+    if (!existingPdfBytes || existingPdfBytes.byteLength === 0) {
+      console.error('Fetched data is empty or not an ArrayBuffer');
+      return;
+    }
+
+    console.log('Fetched ArrayBuffer:', existingPdfBytes); // Check the ArrayBuffer content
+
+    // Check if it's a PDF by looking for the signature "%PDF-"
     const view = new Uint8Array(existingPdfBytes);
-    const pdfSignature = "%PDF-".split('').map(c => c.charCodeAt(0));
+    const pdfSignature = "%PDF-".split('').map(c => c.charCodeAt(0)); // Convert to char codes
 
     let isPdf = true;
     for (let i = 0; i < pdfSignature.length; i++) {
@@ -38,12 +49,19 @@
       }
     }
 
-    console.log(isPdf ? "This is a PDF file." : "This is not a PDF file.");
+    if (isPdf) {
+      console.log("This is a valid PDF.");
+      // Proceed to modify the PDF
+      await modifyPdfContent(existingPdfBytes);
+    } else {
+      console.log("This is not a PDF file.");
+    }
+  } catch (error) {
+    console.error('Error:', error);
+  }
+}
 
-      console.log("Voilà à quoi ressemble le pdf :")
-      console.log(existingPdfBytes); // Check if this is defined and not undefined
-
-      // Load a PDFDocument from the existing PDF bytes
+      /*// Load a PDFDocument from the existing PDF bytes
       const pdfDoc = await PDFDocument.load(existingPdfBytes)
 
       // Embed the Helvetica font
@@ -90,6 +108,6 @@
 
 			// Trigger the browser to download the PDF document
       download(pdfBytes, "citiz_complete.pdf", "application/pdf");
-    }
+    }*/
   </script>
 </html>
