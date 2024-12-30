@@ -16,8 +16,14 @@
 
     async function modifyPdf() {
       // Fetch an existing PDF document
-      const url = 'https://onvamangerou.fr/doc_base.pdf'
-  		const existingPdfBytes = await fetch(url).then(res => res.arrayBuffer())
+      const url = './doc_base.pdf'
+  		const existingPdfBytes = await fetch(url, {
+            method: 'GET',
+            mode: 'cors' // ou 'same-origin' si les fichiers sont sur le même domaine
+        })
+         .then(res => res.arrayBuffer())
+        .then(data => console.log(data))
+        .catch(error => console.error('Erreur:', error))
 
       // Load a PDFDocument from the existing PDF bytes
       const pdfDoc = await PDFDocument.load(existingPdfBytes)
