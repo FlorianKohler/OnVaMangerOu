@@ -10,12 +10,15 @@
   <body>
 
       <!-- Input Fields -->
-  <label for="nom">Nom</label>
+  <h4>Nouveau conducteur / nouvelle conductrice</h4>
+  <label for="nom">Nom </label>
   <input type="text" id="nom" placeholder="DUPONT">
   <br>
     <label for="prenom">Prénom</label>
   <input type="text" id="prenom" placeholder="Jean">
   <br>
+
+  <h4>Période</h4>
   <label for="date1">Date début</label>
   <input type="date" id="date1">
   <br>
@@ -24,7 +27,7 @@
   <input type="date" id="date2">
   <br><br>
 
-    <p>Clique ci-dessous pour générer le document</p>
+    <p>Cliquez ci-dessous pour générer l'avenant au contrat.</p>
     <button onclick="modifyPdf()">Remplir le document PDF</button>
     <p class="small">(Le navigateur téléchargera la version finale)</p>
   </body>
@@ -87,6 +90,7 @@ async function modifyPdfContent(existingPdfBytes) {
     const date2 = document.getElementById('date2').value || '2024-01-02';
 
 
+
   // Load a PDFDocument from the existing PDF bytes
       const pdfDoc = await PDFDocument.load(existingPdfBytes)
 
@@ -105,49 +109,49 @@ async function modifyPdfContent(existingPdfBytes) {
 
       // Draw a string of text diagonally across the first page
       firstPage.drawText('Strascross - Timut Petit (Conducteur principal : Pierre Jourquin)', {
-        x: 130,
-        y: 760,
+        x: 135,
+        y: 756,
         size: 10,
         font: helveticaFont
       })
 
       firstPage.drawText('X', {
-        x: 80,
-        y: 490,
-        size: 7,
+        x: 70,
+        y: 491,
+        size: 9,
         font: helveticaFont
       })
 
       firstPage.drawText('X', {
-        x: 397,
-        y: 465,
-        size: 7,
+        x: 395,
+        y: 464,
+        size: 9,
         font: helveticaFont
       })
 
-      firstPage.drawText('${nom}', {
-        x: 395,
+      firstPage.drawText(nom, {
+        x: 380,
         y: 390,
         size: 10,
         font: helveticaFont
       })
 
-      firstPage.drawText('${prenom}', {
-        x: 400,
+      firstPage.drawText(prenom, {
+        x: 383,
         y: 368,
         size: 10,
         font: helveticaFont
       })
 
-        firstPage.drawText('${date1}', {
-        x: 390,
+        firstPage.drawText(date1, {
+        x: 380,
         y: 345,
         size: 10,
         font: helveticaFont
       })
 
-        firstPage.drawText('${date2}', {
-        x: 390,
+        firstPage.drawText(date2, {
+        x: 380,
         y: 330,
         size: 10,
         font: helveticaFont
@@ -156,14 +160,14 @@ async function modifyPdfContent(existingPdfBytes) {
     const formattedDate = new Intl.DateTimeFormat('fr-FR').format(today);
 
         firstPage.drawText(formattedDate, {
-        x: 100,
-        y: 95,
+        x: 110,
+        y: 98,
         size: 8,
         font: helveticaFont
       })
 
         firstPage.drawText('Strasbourg', {
-        x: 100,
+        x: 110,
         y: 110,
         size: 8,
         font: helveticaFont
@@ -176,7 +180,6 @@ async function modifyPdfContent(existingPdfBytes) {
       download(pdfBytes, "citiz_complete.pdf", "application/pdf");
 
       console.log('PDF modified and ready to download!');
-
     }
 
 
