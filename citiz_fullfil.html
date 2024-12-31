@@ -8,7 +8,23 @@
   </head>
 
   <body>
-    <p>Clique ci-dessous pour faire fonctionner le code <code>pdf-lib</code></p>
+
+      <!-- Input Fields -->
+  <label for="nom">Nom</label>
+  <input type="text" id="nom" placeholder="DUPONT">
+  <br>
+    <label for="prenom">Prénom</label>
+  <input type="text" id="prenom" placeholder="Jean">
+  <br>
+  <label for="date1">Date début</label>
+  <input type="date" id="date1">
+  <br>
+
+  <label for="date2">Date fin</label>
+  <input type="date" id="date2">
+  <br><br>
+
+    <p>Clique ci-dessous pour générer le document</p>
     <button onclick="modifyPdf()">Remplir le document PDF</button>
     <p class="small">(Le navigateur téléchargera la version finale)</p>
   </body>
@@ -65,6 +81,12 @@ async function modifyPdf() {
 // Function to modify the PDF content using pdf-lib
 async function modifyPdfContent(existingPdfBytes) {
 
+    const nom = document.getElementById('nom').value || 'Default Text 1';
+    const date1 = document.getElementById('date1').value || '2024-01-01';
+    const prenom = document.getElementById('prenom').value || 'Default Text 2';
+    const date2 = document.getElementById('date2').value || '2024-01-02';
+
+
   // Load a PDFDocument from the existing PDF bytes
       const pdfDoc = await PDFDocument.load(existingPdfBytes)
 
@@ -83,50 +105,50 @@ async function modifyPdfContent(existingPdfBytes) {
 
       // Draw a string of text diagonally across the first page
       firstPage.drawText('Strascross - Timut Petit (Conducteur principal : Pierre Jourquin)', {
-        x: 230,
-        y: 750,
+        x: 130,
+        y: 760,
         size: 10,
         font: helveticaFont
       })
 
       firstPage.drawText('X', {
-        x: 100,
-        y: 480,
+        x: 80,
+        y: 490,
         size: 7,
         font: helveticaFont
       })
 
       firstPage.drawText('X', {
-        x: 450,
-        y: 470,
+        x: 397,
+        y: 465,
         size: 7,
         font: helveticaFont
       })
 
-      firstPage.drawText('NOM', {
-        x: 400,
+      firstPage.drawText('${nom}', {
+        x: 395,
         y: 390,
         size: 10,
         font: helveticaFont
       })
 
-      firstPage.drawText('PRENOM', {
-        x: 15,
-        y: 370,
+      firstPage.drawText('${prenom}', {
+        x: 400,
+        y: 368,
         size: 10,
         font: helveticaFont
       })
 
-        firstPage.drawText('dd/mm/aaaa', {
-        x: 400,
-        y: 350,
+        firstPage.drawText('${date1}', {
+        x: 390,
+        y: 345,
         size: 10,
         font: helveticaFont
       })
 
-        firstPage.drawText('dd/mm/aaaa', {
-        x: 400,
-        y: 335,
+        firstPage.drawText('${date2}', {
+        x: 390,
+        y: 330,
         size: 10,
         font: helveticaFont
       })
@@ -134,14 +156,14 @@ async function modifyPdfContent(existingPdfBytes) {
     const formattedDate = new Intl.DateTimeFormat('fr-FR').format(today);
 
         firstPage.drawText(formattedDate, {
-        x: 200,
-        y: 120,
+        x: 100,
+        y: 95,
         size: 8,
         font: helveticaFont
       })
 
         firstPage.drawText('Strasbourg', {
-        x: 15,
+        x: 100,
         y: 110,
         size: 8,
         font: helveticaFont
