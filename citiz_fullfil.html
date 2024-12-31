@@ -100,14 +100,14 @@ async function modifyPdfContent(existingPdfBytes) {
   const prenom = document.getElementById('prenom').value || 'Default Text 2';
   const date2Raw = document.getElementById('date2').value || '2024-01-02';
 
+  // Format dates
+  const date1 = formatDate(date1Raw);
+  const date2 = formatDate(date2Raw);
+
   console.log('Nom :', nom);
   console.log('Prénom :', prenom);
   console.log('Date1 :', date1);
   console.log('Date2 :', date2);
-
-  // Format dates
-  const date1 = formatDate(date1Raw);
-  const date2 = formatDate(date2Raw);
 
   // Load a PDFDocument from the existing PDF bytes
       const pdfDoc = await PDFDocument.load(existingPdfBytes)
