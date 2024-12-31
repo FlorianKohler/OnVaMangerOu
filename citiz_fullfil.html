@@ -148,28 +148,28 @@ async function modifyPdfContent(existingPdfBytes) {
       })
 
       firstPage.drawText(nom, {
-        x: 370,
+        x: 365,
         y: 390,
         size: 10,
         font: helveticaFont
       })
 
       firstPage.drawText(prenom, {
-        x: 373,
+        x: 368,
         y: 368,
         size: 10,
         font: helveticaFont
       })
 
         firstPage.drawText(date1, {
-        x: 369,
+        x: 355,
         y: 345,
         size: 10,
         font: helveticaFont
       })
 
         firstPage.drawText(date2, {
-        x: 369,
+        x: 355,
         y: 328,
         size: 10,
         font: helveticaFont
@@ -178,15 +178,15 @@ async function modifyPdfContent(existingPdfBytes) {
     const formattedDate = new Intl.DateTimeFormat('fr-FR').format(today);
 
         firstPage.drawText(formattedDate, {
-        x: 113,
-        y: 96,
+        x: 114,
+        y: 110,
         size: 9,
         font: helveticaFont
       })
 
         firstPage.drawText('Strasbourg', {
-        x: 112,
-        y: 110,
+        x: 113,
+        y: 97,
         size: 9,
         font: helveticaFont
       })
