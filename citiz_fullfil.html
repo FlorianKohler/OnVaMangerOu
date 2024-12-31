@@ -127,50 +127,50 @@ async function modifyPdfContent(existingPdfBytes) {
 
       // Draw a string of text diagonally across the first page
       firstPage.drawText('Strascross - Timut Petit (Conducteur principal : Pierre Jourquin)', {
-        x: 135,
+        x: 143,
         y: 756,
         size: 10,
         font: helveticaFont
       })
 
       firstPage.drawText('X', {
-        x: 70,
+        x: 66,
         y: 491,
         size: 9,
         font: helveticaFont
       })
 
       firstPage.drawText('X', {
-        x: 395,
+        x: 393,
         y: 464,
         size: 9,
         font: helveticaFont
       })
 
       firstPage.drawText(nom, {
-        x: 380,
+        x: 375,
         y: 390,
         size: 10,
         font: helveticaFont
       })
 
       firstPage.drawText(prenom, {
-        x: 383,
+        x: 378,
         y: 368,
         size: 10,
         font: helveticaFont
       })
 
         firstPage.drawText(date1, {
-        x: 380,
+        x: 374,
         y: 345,
         size: 10,
         font: helveticaFont
       })
 
         firstPage.drawText(date2, {
-        x: 380,
-        y: 330,
+        x: 374,
+        y: 328,
         size: 10,
         font: helveticaFont
       })
@@ -178,16 +178,16 @@ async function modifyPdfContent(existingPdfBytes) {
     const formattedDate = new Intl.DateTimeFormat('fr-FR').format(today);
 
         firstPage.drawText(formattedDate, {
-        x: 110,
+        x: 113,
         y: 98,
-        size: 8,
+        size: 9,
         font: helveticaFont
       })
 
         firstPage.drawText('Strasbourg', {
-        x: 110,
-        y: 110,
-        size: 8,
+        x: 112,
+        y: 108,
+        size: 9,
         font: helveticaFont
       })
 
