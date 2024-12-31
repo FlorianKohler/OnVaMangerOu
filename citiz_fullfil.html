@@ -81,15 +81,33 @@ async function modifyPdf() {
   }
 }
 
+function formatDate(inputDate) {
+  const date = new Date(inputDate);
+  const day = String(date.getDate()).padStart(2, '0'); // Add leading zero
+  const month = String(date.getMonth() + 1).padStart(2, '0'); // Months are 0-based
+  const year = date.getFullYear();
+  return `${day}/${month}/${year}`;
+}
+
+
+
 // Function to modify the PDF content using pdf-lib
 async function modifyPdfContent(existingPdfBytes) {
 
-    const nom = document.getElementById('nom').value || 'Default Text 1';
-    const date1 = document.getElementById('date1').value || '2024-01-01';
-    const prenom = document.getElementById('prenom').value || 'Default Text 2';
-    const date2 = document.getElementById('date2').value || '2024-01-02';
+// Get user inputs
+  const text1 = document.getElementById('text1').value || 'Default Text 1';
+  const date1Raw = document.getElementById('date1').value || '2024-01-01';
+  const text2 = document.getElementById('text2').value || 'Default Text 2';
+  const date2Raw = document.getElementById('date2').value || '2024-01-02';
 
+  console.log('Text1:', text1);
+  console.log('Date1:', date1);
+  console.log('Text2:', text2);
+  console.log('Date2:', date2);
 
+  // Format dates
+  const date1 = formatDate(date1Raw);
+  const date2 = formatDate(date2Raw);
 
   // Load a PDFDocument from the existing PDF bytes
       const pdfDoc = await PDFDocument.load(existingPdfBytes)
