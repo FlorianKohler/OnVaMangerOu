@@ -95,13 +95,13 @@ function formatDate(inputDate) {
 async function modifyPdfContent(existingPdfBytes) {
 
 // Get user inputs
-  const text1 = document.getElementById('text1').value || 'Default Text 1';
+  const nom = document.getElementById('nom').value || 'Default Text 1';
   const date1Raw = document.getElementById('date1').value || '2024-01-01';
-  const text2 = document.getElementById('text2').value || 'Default Text 2';
+  const prenom = document.getElementById('prenom').value || 'Default Text 2';
   const date2Raw = document.getElementById('date2').value || '2024-01-02';
 
-  console.log('Nom :', text1);
-  console.log('Prénom :', text2);
+  console.log('Nom :', nom);
+  console.log('Prénom :', prenom);
   console.log('Date1 :', date1);
   console.log('Date2 :', date2);
 
