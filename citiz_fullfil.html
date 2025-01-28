@@ -108,12 +108,15 @@ function formatDate(inputDate) {
 async function modifyPdfContent(existingPdfBytes) {
 
 // Get user inputs
-  const categorieText = categorieSelect.options[categorieSelect.selectedIndex].text;
+
+  // cette ligne récupère Option1/Option2 etc
   const conducteurPrincipal_option = document.getElementById('conducteurPrincipal');
+  // et cette ligne là récupère le texte associé, à savoir le nom du conducteur principal
   const conducteurPrincipal = conducteurPrincipal_option[conducteurPrincipal_option.selectedIndex].text;
-  const nom = document.getElementById('nom').value || 'Default Text 1';
+
+  const nom = document.getElementById('nom').value || 'NomParDefaut';
   const date1Raw = document.getElementById('date1').value || '2024-01-01';
-  const prenom = document.getElementById('prenom').value || 'Default Text 2';
+  const prenom = document.getElementById('prenom').value || 'PrenomParDefaut';
   const date2Raw = document.getElementById('date2').value || '2024-01-02';
 
   // Format dates
