@@ -43,6 +43,12 @@
     <hr>
     <p>Cliquez ci-dessous pour générer un modèle de mail</br>
     <button onclick="sendEmail()">Envoyer l'email</button></p>
+     <!-- Hidden text area that will show up on button click -->
+    
+    <div id="hiddenDiv" style="display:none;">
+      <p id="hiddenMessage" style="color:red;">Attention à ne pas oublier de joindre l'avenant au contrat téléchargé ainsi que le permis de conduire !</p>
+  </div>
+  <br>
   </body>
 
   <script>
@@ -223,11 +229,17 @@ async function modifyPdfContent(existingPdfBytes) {
 
 
 function sendEmail() {
-  const destinator = "contact@citiz.fr"; // Adresse email à changer
-  const subject = encodeURIComponent("Ajout conducteur occasionnel");
-  const body = encodeURIComponent("Bonjour,\n\nVeuillez trouver ci-joint l'avenant au contrat pour l'ajout, comme conducteur occasionnel, de " + prenom.value + " " + nom.value + ", ainsi qu'une copie de son permis de conduire.\n\nCordialement\n\nStrascross");
+
+  document.getElementById("hiddenDiv").style.display = "block";
+
+
+  // LES INFOS DU MAIL
+  const destinator = "contact@citiz.fr"; // ADRESSE MAIL A CHANGER
+  const subject = encodeURIComponent("Ajout conducteur occasionnel"); // OBJET
+  const body = encodeURIComponent("Bonjour,\n\nVeuillez trouver ci-joint l'avenant au contrat pour l'ajout, comme conducteur occasionnel, de " + prenom.value + " " + nom.value + ", ainsi qu'une copie de son permis de conduire.\n\nCordialement\n\nStrascross"); // CONTENU
 
   window.location.href = `mailto:${destinator}?subject=${subject}&body=${body}`;
+
 }
       
   </script>
