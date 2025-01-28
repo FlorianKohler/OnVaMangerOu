@@ -25,11 +25,24 @@
 
   <label for="date2">Date fin</label>
   <input type="date" id="date2">
-  <br><br>
+  <br>
 
-    <p>Cliquez ci-dessous pour générer l'avenant au contrat.</p>
-    <button onclick="modifyPdf()">Remplir le document PDF</button>
-    <p class="small">(Le navigateur téléchargera la version finale)</p>
+  <h4>Conducteur principal de rattachement</h4>
+  <select id="conducteurPrincipal">
+  <option value="option1" selected>Conducteur princ. 1</option> // ICI IL FAUT CHANGER LES 5 NOMS
+  <option value="option2">Conducteur princ. 2</option>
+  <option value="option3">Conducteur princ. 3</option>
+  <option value="option4">Conducteur princ. 4</option>
+  <option value="option5">Conducteur princ. 5</option>
+  </select>
+<hr>
+    <p>Cliquez ci-dessous pour générer l'avenant au contrat.</br>
+    <button onclick="modifyPdf()">Remplir le document PDF</button></br>
+    <small>(Le navigateur téléchargera la version finale)</small></p>
+
+    <hr>
+    <p>Cliquez ci-dessous pour générer un modèle de mail</br>
+    <button onclick="sendEmail()">Envoyer l'email</button></p>
   </body>
 
   <script>
@@ -95,6 +108,9 @@ function formatDate(inputDate) {
 async function modifyPdfContent(existingPdfBytes) {
 
 // Get user inputs
+  const categorieText = categorieSelect.options[categorieSelect.selectedIndex].text;
+  const conducteurPrincipal_option = document.getElementById('conducteurPrincipal');
+  const conducteurPrincipal = conducteurPrincipal_option[conducteurPrincipal_option.selectedIndex].text;
   const nom = document.getElementById('nom').value || 'Default Text 1';
   const date1Raw = document.getElementById('date1').value || '2024-01-01';
   const prenom = document.getElementById('prenom').value || 'Default Text 2';
@@ -104,6 +120,7 @@ async function modifyPdfContent(existingPdfBytes) {
   const date1 = formatDate(date1Raw);
   const date2 = formatDate(date2Raw);
 
+  console.log('ConducteurPrincipal :', conducteurPrincipal);
   console.log('Nom :', nom);
   console.log('Prénom :', prenom);
   console.log('Date1 :', date1);
@@ -125,8 +142,9 @@ async function modifyPdfContent(existingPdfBytes) {
       console.log("Hauteur :", height)
 
 
+
       // Draw a string of text diagonally across the first page
-      firstPage.drawText('Strascross - Timut Petit (Conducteur principal : Pierre Jourquin)', {
+      firstPage.drawText('Strascross - Timut Petit (Conducteur principal : ' + conducteurPrincipal + ')', {
         x: 150,
         y: 756,
         size: 10,
@@ -201,7 +219,13 @@ async function modifyPdfContent(existingPdfBytes) {
     }
 
 
+function sendEmail() {
+  const destinator = "contact@citiz.fr"; // Adresse email à changer
+  const subject = encodeURIComponent("Ajout conducteur occasionnel");
+  const body = encodeURIComponent("Bonjour,\n\nVeuillez trouver ci-joint l'avenant au contrat pour l'ajout, comme conducteur occasionnel, de " + prenom.value + " " + nom.value + ", ainsi qu'une copie de son permis de conduire.\n\nCordialement\n\nStrascross");
 
+  window.location.href = `mailto:${destinator}?subject=${subject}&body=${body}`;
+}
       
   </script>
 </html>
