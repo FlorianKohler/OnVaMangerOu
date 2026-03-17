@@ -154,7 +154,7 @@ async function modifyPdfContent(existingPdfBytes) {
 
       // Champ Nom
       firstPage.drawText('Timut', {
-        x: 175,
+        x: 174,
         y: 705,
         size: 10,
         font: helveticaFont
@@ -164,28 +164,28 @@ async function modifyPdfContent(existingPdfBytes) {
 
       firstPage.drawText('Petit', {
         x: 377,
-        y: 704,
+        y: 705,
         size: 10,
         font: helveticaFont
       })
 
       // Croix conducteur temporaire
       firstPage.drawText('X', {
-        x: 310,
-        y: 360,
-        size: 9,
+        x: 306,
+        y: 361,
+        size: 8,
         font: helveticaFont
       })
 
       firstPage.drawText(nom, {
-        x: 337,
+        x: 336,
         y: 350,
         size: 10,
         font: helveticaFont
       })
 
       firstPage.drawText(prenom, {
-        x: 355,
+        x: 352,
         y: 335,
         size: 10,
         font: helveticaFont
@@ -193,15 +193,15 @@ async function modifyPdfContent(existingPdfBytes) {
 
         firstPage.drawText(date1, {
         x: 325,
-        y: 320,
-        size: 10,
+        y: 319,
+        size: 9,
         font: helveticaFont
       })
 
         firstPage.drawText(date2, {
         x: 397,
-        y: 320,
-        size: 10,
+        y: 319,
+        size: 9,
         font: helveticaFont
       })
         const today = new Date();
@@ -210,18 +210,18 @@ async function modifyPdfContent(existingPdfBytes) {
     const formattedDate = new Intl.DateTimeFormat('fr-FR').format(today);
 
         firstPage.drawText(formattedDate, {
-        x: 273,
-        y: 122,
-        size: 9,
+        x: 272,
+        y: 121,
+        size: 10,
         font: helveticaFont
       })
 
     // Champ lieu (à la signature)
 
         firstPage.drawText('Strasbourg', {
-        x: 120,
-        y: 122,
-        size: 9,
+        x: 118,
+        y: 121,
+        size: 10,
         font: helveticaFont
       })
 
