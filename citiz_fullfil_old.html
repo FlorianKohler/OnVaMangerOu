@@ -57,7 +57,7 @@
 async function modifyPdf() {
   try {
     // Fetch an existing PDF document
-    const url = './doc_base_2.pdf'; // Your PDF file URL
+    const url = './doc_base.pdf'; // Your PDF file URL
     const existingPdfBytes = await fetch(url, {
       method: 'GET',
       mode: 'same-origin', // or 'cors' if files are from a different domain
@@ -152,75 +152,68 @@ async function modifyPdfContent(existingPdfBytes) {
 
 
 
-      // Champ Nom
-      firstPage.drawText('Timut', {
-        x: 220,
-        y: 943,
+      // Draw a string of text diagonally across the first page
+      firstPage.drawText('Strascross - Timut Petit (Conducteur principal : ' + conducteurPrincipal + ')', {
+        x: 150,
+        y: 756,
         size: 10,
         font: helveticaFont
       })
 
-      // Champ Prenom
-
-      firstPage.drawText('Petit', {
-        x: 495,
-        y: 943,
-        size: 10,
-        font: helveticaFont
-      })
-
-      // Croix conducteur temporaire
       firstPage.drawText('X', {
-        x: 410,
-        y: 482,
+        x: 66,
+        y: 491,
+        size: 9,
+        font: helveticaFont
+      })
+
+      firstPage.drawText('X', {
+        x: 392,
+        y: 463,
         size: 9,
         font: helveticaFont
       })
 
       firstPage.drawText(nom, {
-        x: 436,
+        x: 365,
         y: 390,
         size: 10,
         font: helveticaFont
       })
 
       firstPage.drawText(prenom, {
-        x: 450,
-        y: 390,
+        x: 368,
+        y: 368,
         size: 10,
         font: helveticaFont
       })
 
         firstPage.drawText(date1, {
-        x: 420,
-        y: 423,
-        size: 9,
+        x: 355,
+        y: 345,
+        size: 10,
         font: helveticaFont
       })
 
         firstPage.drawText(date2, {
-        x: 530,
-        y: 423,
-        size: 9,
+        x: 355,
+        y: 328,
+        size: 10,
         font: helveticaFont
       })
         const today = new Date();
-
-    // Champ date (avant la signature)
     const formattedDate = new Intl.DateTimeFormat('fr-FR').format(today);
 
         firstPage.drawText(formattedDate, {
-        x: 132,
-        y: 155,
+        x: 114,
+        y: 110,
         size: 9,
         font: helveticaFont
       })
 
-    // Champ lieu (à la signature)
-
         firstPage.drawText('Strasbourg', {
-        x: 290,
-        y: 155,
+        x: 113,
+        y: 97,
         size: 9,
         font: helveticaFont
       })
