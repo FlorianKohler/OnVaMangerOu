@@ -171,21 +171,21 @@ async function modifyPdfContent(existingPdfBytes) {
 
       // Croix conducteur temporaire
       firstPage.drawText('X', {
-        x: 306,
+        x: 303,
         y: 361,
         size: 8,
         font: helveticaFont
       })
 
       firstPage.drawText(nom, {
-        x: 336,
+        x: 333,
         y: 350,
         size: 10,
         font: helveticaFont
       })
 
       firstPage.drawText(prenom, {
-        x: 352,
+        x: 349,
         y: 335,
         size: 10,
         font: helveticaFont
@@ -210,8 +210,8 @@ async function modifyPdfContent(existingPdfBytes) {
     const formattedDate = new Intl.DateTimeFormat('fr-FR').format(today);
 
         firstPage.drawText(formattedDate, {
-        x: 272,
-        y: 121,
+        x: 270,
+        y: 120,
         size: 10,
         font: helveticaFont
       })
@@ -219,8 +219,8 @@ async function modifyPdfContent(existingPdfBytes) {
     // Champ lieu (à la signature)
 
         firstPage.drawText('Strasbourg', {
-        x: 118,
-        y: 121,
+        x: 115,
+        y: 120,
         size: 10,
         font: helveticaFont
       })
